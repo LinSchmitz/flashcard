@@ -4,13 +4,18 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --red1: #d63245;
+  --light1: #f5eddc;
+
+  --gray1: #383838;
+
+  background-color: #242424;
 }
 
 body {
@@ -35,9 +40,16 @@ body {
 .flashcards p {
   width: 400px;
   height: 200px;
-  border: 1px solid #fff;
-  background-color: bisque;
-  color: #242424;
+  background-color: var(--light1);
+  border: 3px solid var(--red1);
+  color: var(--gray1);
   padding: 1.5rem;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.selected p {
+  border: 3px solid var(--light1);
+  background-color: var(--red1);
+  color: var(--light1);
 }
