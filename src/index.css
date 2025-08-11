@@ -10,22 +10,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --red1: #d63245;
-  --light1: #f5eddc;
-
-  --gray1: #383838;
-
-  background-color: #242424;
+  --primary-100: #1f3a5f;
+  --primary-200: #4d648d;
+  --primary-300: #acc2ef;
+  --accent-100: #3d5a80;
+  --accent-200: #cee8ff;
+  --text-100: #ffffff;
+  --text-200: #e0e0e0;
+  --bg-100: #0f1c2e;
+  --bg-200: #1f2b3e;
+  --bg-300: #374357;
 }
 
 body {
   margin: 0;
   display: flex;
-  justify-content: center; /* مرکز افقی */
-  align-items: center; /* مرکز عمودی */
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--background-color, #242424);
+  background-color: var(--bg-100);
 }
 
 .flashcards {
@@ -33,21 +37,22 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  margin: 0; /* حذف حاشیه */
+  margin: 0;
   font-size: 1.5rem;
   text-align: center;
   width: 100%;
   max-width: 440px;
+  color: var(--text-200);
 }
 
 .card {
   position: relative;
-  width: 35rem; /* عرض ثابت */
-  height: 15rem; /* ارتفاع ثابت */
-  background-color: var(--light1);
-  border: 3px solid var(--red1);
-  color: var(--gray1);
-  padding: 1.5rem 3.5rem 1.5rem 1.5rem; /* جای کافی برای دکمه */
+  width: 35rem;
+  height: 15rem;
+  background-color: var(--bg-300);
+  border: 3px solid var(--primary-100);
+  color: var(--text-100);
+  padding: 1.5rem 3.5rem 1.5rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
   user-select: none;
@@ -57,21 +62,26 @@ body {
   justify-content: center;
   text-align: center;
 
-  box-sizing: border-box; /* تضمین می‌کند padding داخل اندازه محاسبه شود */
-  overflow-wrap: break-word; /* جلوگیری از سرریز شدن متن */
-  word-break: break-word; /* شکستن کلمات طولانی */
-  white-space: normal; /* اجازه شکستن خطوط */
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(214, 50, 69, 0.45);
+  box-shadow: 0 4px 8px var(--accent-200);
+  border-color: var(--primary-200);
+  background-color: var(--bg-200);
 }
 
 .card.selected {
-  border-color: var(--light1);
-  background-color: var(--red1);
-  color: var(--light1);
-  box-shadow: 0 8px 24px rgba(245, 237, 220, 0.6);
+  border-color: var(--accent-200);
+  background-color: var(--primary-200);
+  color: var(--text-100);
+  box-shadow: 0 4px 12px var(--accent-200);
 }
 
 .next-button {
@@ -81,7 +91,7 @@ body {
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: var(--red1);
+  color: var(--primary-100);
   font-size: 2.5rem;
   cursor: pointer;
   user-select: none;
@@ -91,10 +101,10 @@ body {
 }
 
 .next-button:hover {
-  color: var(--light1);
+  color: var(--accent-200);
 }
 
 .next-button:active {
   transform: scale(0.95);
-  box-shadow: 0 2px 6px rgba(214, 50, 69, 0.4);
+  box-shadow: 0 1px 3px var(--accent-200);
 }
