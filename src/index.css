@@ -118,6 +118,7 @@ body {
   box-shadow: 0 4px 12px var(--accent-200);
 }
 
+/*  button   */
 .next-button {
   position: absolute;
   top: 50%;
