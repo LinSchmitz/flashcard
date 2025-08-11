@@ -20,6 +20,22 @@
   --bg-100: #1d2d43;
   --bg-200: #22304c;
   --bg-300: #415474;
+
+  --green-100: #2e7d32;
+  --green-200: #66bb6a;
+  --green-300: #c8e6c9;
+
+  --red-100: #c62828;
+  --red-200: #ef5350;
+  --red-300: #ffcdd2;
+
+  --orange-100: #ef6c00;
+  --orange-200: #ffa726;
+  --orange-300: #ffe0b2;
+
+  --gray-100: #4a4a4a;
+  --gray-200: #7d7d7d;
+  --gray-300: #bdbdbd;
 }
 
 body {
@@ -150,4 +166,32 @@ body {
 .prev-button:active {
   transform: scale(0.95);
   box-shadow: 0 1px 3px var(--accent-200);
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.btn-x {
+  color: var(--accent-200);
+  background-color: var(--red-100);
+}
+
+.btn-del {
+  color: var(--accent-200);
+  background-color: var(--gray-200);
+}
+
+.btn-ok {
+  color: var(--accent-200);
+  background-color: var(--green-100);
 }
