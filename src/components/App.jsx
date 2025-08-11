@@ -317,12 +317,32 @@ function Flashcards() {
     setCurrentIndex(prev => (prev + 1) % questions.length);
   }
 
+  function handlePrev() {
+    setShowAnswer(false);
+    setCurrentIndex(prev => (prev - 1 + questions.length) % questions.length);
+  }
+
   return (
     <div
       onClick={handleCardClick}
       className={`card ${showAnswer ? 'selected' : ''}`}
     >
+      <div className="card-number">
+        {currentIndex + 1}/{questions.length}
+      </div>
       <p>{showAnswer ? currentQuestion.answer : currentQuestion.question}</p>
+
+      <button
+        className="prev-button"
+        onClick={e => {
+          e.stopPropagation();
+          handlePrev();
+        }}
+        aria-label="Previous question"
+      >
+        ←
+      </button>
+
       <button
         className="next-button"
         onClick={e => {
