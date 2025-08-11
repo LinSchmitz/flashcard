@@ -1,7 +1,116 @@
 # Flashcard
 
-* [LIVE](https://flashcard-bay.vercel.app/)
+## 1. **تعریف ایده و نیازمندی‌ها**
 
- ![Screenshot (181)](https://github.com/naleilan/flashcard/assets/7776224/927af8eb-db88-4ad6-811f-b996bd1d9442)
- 
-* This React application consists of a Flashcards component that renders a list of questions with their corresponding answers. The App component serves as the main entry point, rendering the Flashcards component. The questions are defined in an array with each question having an id, a question statement, and an answer. The Flashcards component manages the state of the selected question, allowing users to toggle between the question and answer by clicking on a specific card. The selected card is highlighted to provide visual feedback. The application provides a simple interactive interface for reviewing and learning JavaScript concepts.
+- مشخص کن پروژه قراره **چه ویژگی‌هایی** داشته باشه:
+
+  - اضافه‌کردن فلش‌کارت جدید
+  - حذف یا ویرایش کارت‌ها
+  - مرور کارت‌ها (یک‌به‌یک)
+  - امکان برعکس‌کردن کارت (پرسش/پاسخ)
+  - دسته‌بندی کارت‌ها یا موضوعات
+  - ذخیره داده‌ها (LocalStorage یا API)
+  - تصمیم بگیر تک‌زبانه باشه یا چندزبانه.
+
+---
+
+## 2. **طراحی UX/UI (رسم روی کاغذ یا Figma)**
+
+- صفحه اصلی → لیست فلش‌کارت‌ها یا گزینه شروع مرور
+- صفحه مرور → یک کارت در مرکز، دکمه "برگشتن" و "بعدی"
+- صفحه مدیریت → اضافه‌کردن و ویرایش کارت‌ها
+- حالت موبایل و دسکتاپ رو هم در نظر بگیر.
+
+https://lang.b-amooz.com/de/vocabulary/subcategories/1250/lektion-13
+https://wort.cc/app/dashboard
+
+---
+
+## 3. **ساختار پروژه**
+
+- مسیرهای اصلی (Routes):
+
+  1. `/` → صفحه خانه یا داشبورد
+  2. `/review` → صفحه مرور کارت‌ها
+  3. `/manage` → مدیریت کارت‌ها
+
+- پوشه‌بندی: ✅
+
+  ```
+  src/
+    components/
+            |_ App.jsx
+    pages/
+    hooks/
+    utils/
+    data/
+  ```
+
+---
+
+## 4. **راه‌اندازی پروژه** ✅
+
+---
+
+## 5. **ساخت کامپوننت‌ها**
+
+- `Flashcard` → نمایش کارت و قابلیت برگرداندن
+- `FlashcardList` → نمایش لیست کارت‌ها
+- `CardForm` → اضافه/ویرایش کارت
+- `Navbar` → منوی بالای سایت
+- `ReviewControls` → دکمه‌های مرور (بعدی، قبلی، علامت‌زدن به‌عنوان یادگرفته‌شده)
+
+---
+
+## 6. **مدیریت State**
+
+- استفاده از `useState` و `useEffect` برای کنترل داده‌ها
+- برای پروژه ساده، داده‌ها رو در LocalStorage ذخیره کن (hook جدا بنویس)
+- اگر بخوای پیشرفته‌تر باشه → React Context یا Zustand/Redux برای مدیریت کارت‌ها
+
+---
+
+## 7. **ویژگی‌های اصلی**
+
+- **برگشت کارت:** روی کارت کلیک کنی و پشت/روی کارت نمایش داده بشه
+- **مرور تصادفی:** کارت‌ها رو Shuffle کنی
+- **امتیاز یادگیری:** برای هر کارت درصد یادگیری ذخیره بشه
+- **فیلتر دسته‌بندی:** مثلا فقط کارت‌های "گرامر" رو ببینی
+
+---
+
+## 8. **ذخیره‌سازی**
+
+- مرحله اول: ذخیره کارت‌ها در LocalStorage
+- مرحله بعد: ساخت API ساده با JSON Server یا Supabase برای ذخیره آنلاین
+
+---
+
+## 9. **بهبود تجربه کاربری (UX)**
+
+- انیمیشن کارت برگشتن با `framer-motion`
+- نوار پیشرفت مرور
+- حالت Dark/Light
+
+---
+
+## 10. **تست و دیباگ**
+
+- بررسی عملکرد روی موبایل
+- تست مرور سریع کارت‌ها
+- چک کردن عملکرد ذخیره داده‌ها بعد از رفرش
+
+---
+
+## 11. **دیپلوی پروژه**
+
+- دیپلوی رایگان روی `Vercel` یا `Netlify`
+- تست لینک روی موبایل و دسکتاپ
+
+---
+
+## 12. **ویژگی‌های پیشرفته (بعداً اضافه می‌کنی)**
+
+- اکانت کاربری و لاگین (Firebase Auth یا Supabase Auth)
+- همگام‌سازی کارت‌ها بین دستگاه‌ها
+- مرور بر اساس الگوریتم **Spaced Repetition** (مثل Anki)
