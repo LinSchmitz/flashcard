@@ -303,25 +303,36 @@ export default function App() {
 }
 
 function Flashcards() {
-  const [selectedId, seSelectedId] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
 
-  function handleClick(id) {
-    seSelectedId(id !== selectedId ? id : null);
+  const currentQuestion = questions[currentIndex];
+
+  function handleCardClick() {
+    setShowAnswer(!showAnswer);
+  }
+
+  function handleNext() {
+    setShowAnswer(false);
+    setCurrentIndex(prev => (prev + 1) % questions.length);
   }
 
   return (
-    <div className="flashcards">
-      {questions.map(question => (
-        <div
-          key={question.id}
-          onClick={() => handleClick(question.id)}
-          className={question.id === selectedId ? 'selected' : ''}
-        >
-          <p>
-            {question.id === selectedId ? question.answer : question.question}
-          </p>
-        </div>
-      ))}
+    <div
+      onClick={handleCardClick}
+      className={`card ${showAnswer ? 'selected' : ''}`}
+    >
+      <p>{showAnswer ? currentQuestion.answer : currentQuestion.question}</p>
+      <button
+        className="next-button"
+        onClick={e => {
+          e.stopPropagation();
+          handleNext();
+        }}
+        aria-label="Next question"
+      >
+        →
+      </button>
     </div>
   );
 }
