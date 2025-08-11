@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
 
-export default function App() {
-  return (
-    <>
-      <Flashcards />
-    </>
-  );
-}
-
 const questions = [
   {
     id: 1,
@@ -301,6 +293,14 @@ const questions = [
       'Likely improvements in Server Components, form actions, and compiler optimizations.',
   },
 ];
+
+export default function App() {
+  return (
+    <>
+      <Flashcards />
+    </>
+  );
+}
 
 function Flashcards() {
   const [selectedId, seSelectedId] = useState(null);
