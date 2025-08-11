@@ -357,7 +357,6 @@ function Flashcards() {
       </div>
       <section className="btns">
         <button className="btn btn-x">
-          {' '}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -375,7 +374,6 @@ function Flashcards() {
         </button>
         <button className="btn btn-del"> 🗑️</button>
         <button className="btn btn-ok">
-          {' '}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
