@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Flashcards } from './Flashcards';
 
-const questions = [
+export const questions = [
   {
     id: 1,
     question: 'What is React and why is it popular?',
@@ -299,96 +300,5 @@ export default function App() {
     <>
       <Flashcards />
     </>
-  );
-}
-
-function Flashcards() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-
-  const currentQuestion = questions[currentIndex];
-
-  function handleCardClick() {
-    setShowAnswer(!showAnswer);
-  }
-
-  function handleNext() {
-    setShowAnswer(false);
-    setCurrentIndex(prev => (prev + 1) % questions.length);
-  }
-
-  function handlePrev() {
-    setShowAnswer(false);
-    setCurrentIndex(prev => (prev - 1 + questions.length) % questions.length);
-  }
-
-  return (
-    <div>
-      <div
-        onClick={handleCardClick}
-        className={`card ${showAnswer ? 'selected' : ''}`}
-      >
-        <div className="card-number">
-          {currentIndex + 1}/{questions.length}
-        </div>
-        <p>{showAnswer ? currentQuestion.answer : currentQuestion.question}</p>
-
-        <button
-          className="prev-button"
-          onClick={e => {
-            e.stopPropagation();
-            handlePrev();
-          }}
-          aria-label="Previous question"
-        >
-          ←
-        </button>
-
-        <button
-          className="next-button"
-          onClick={e => {
-            e.stopPropagation();
-            handleNext();
-          }}
-          aria-label="Next question"
-        >
-          →
-        </button>
-      </div>
-      <section className="btns">
-        <button className="btn btn-x">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            stroke="white"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-        <button className="btn btn-del"> 🗑️</button>
-        <button className="btn btn-ok">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="white"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-        </button>
-      </section>
-    </div>
   );
 }
