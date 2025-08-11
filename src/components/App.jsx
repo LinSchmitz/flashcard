@@ -323,36 +323,43 @@ function Flashcards() {
   }
 
   return (
-    <div
-      onClick={handleCardClick}
-      className={`card ${showAnswer ? 'selected' : ''}`}
-    >
-      <div className="card-number">
-        {currentIndex + 1}/{questions.length}
+    <div>
+      <div
+        onClick={handleCardClick}
+        className={`card ${showAnswer ? 'selected' : ''}`}
+      >
+        <div className="card-number">
+          {currentIndex + 1}/{questions.length}
+        </div>
+        <p>{showAnswer ? currentQuestion.answer : currentQuestion.question}</p>
+
+        <button
+          className="prev-button"
+          onClick={e => {
+            e.stopPropagation();
+            handlePrev();
+          }}
+          aria-label="Previous question"
+        >
+          ←
+        </button>
+
+        <button
+          className="next-button"
+          onClick={e => {
+            e.stopPropagation();
+            handleNext();
+          }}
+          aria-label="Next question"
+        >
+          →
+        </button>
       </div>
-      <p>{showAnswer ? currentQuestion.answer : currentQuestion.question}</p>
-
-      <button
-        className="prev-button"
-        onClick={e => {
-          e.stopPropagation();
-          handlePrev();
-        }}
-        aria-label="Previous question"
-      >
-        ←
-      </button>
-
-      <button
-        className="next-button"
-        onClick={e => {
-          e.stopPropagation();
-          handleNext();
-        }}
-        aria-label="Next question"
-      >
-        →
-      </button>
+      <section className="btns">
+        <button> ❌</button>
+        <button> 🗑️</button>
+        <button> ✔️</button>
+      </section>
     </div>
   );
 }
