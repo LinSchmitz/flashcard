@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { questions } from './App';
+import { questions } from '../data/questions';
 
 export function Flashcards() {
   const [currentIndex, setCurrentIndex] = useState(0);
